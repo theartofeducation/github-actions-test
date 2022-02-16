@@ -1,0 +1,10 @@
+name: github-actions-test ci
+on:
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  test:
+    name: Run E2E Tests on
+    runs-on: ubuntu-latest
+    run: |
+curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.v3+json" -H "Content-Type: application/json" https://api.github.com/repos/aoeu-e2e/dispatches --data '{"event_type": "build_application"}'
