@@ -1,5 +1,6 @@
 name: github-actions-test ci
 on:
+  push:
   pull_request:
     types: [opened, reopened]
   repository_dispatch:
@@ -8,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-      curl -X POST https://api.github.com/repos/jmosley5/aoeu-e2e/actions/dispatches \
-      -H "Accept: application/vnd.github.everest-preview+json" \
-      -u ${{ secrets.ACCESS_TOKEN }} \
-      --data '{"ref": "main"}'
+        curl -X POST https://api.github.com/repos/jmosley5/aoeu-e2e/actions/dispatches \
+        -H "Accept: application/vnd.github.everest-preview+json" \
+        -u ${{ secrets.ACCESS_TOKEN }} \
+        --data '{"ref": "main"}'
