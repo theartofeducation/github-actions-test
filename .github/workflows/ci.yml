@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
     types: [opened, reopened]
-  repository_dispatch:
+  workflow_dispatch:
 jobs:
   test:
     name: Run GA Workflow from E2E
