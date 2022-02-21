@@ -5,6 +5,8 @@ on:
     types: [opened, reopened]
   repository_dispatch:
 jobs:
+  test:
+    name: Run GA Workflow from E2E
     runs-on: ubuntu-latest
     steps:
     - run: |
