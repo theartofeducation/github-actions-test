@@ -13,4 +13,4 @@ jobs:
         curl -X POST https://api.github.com/repos/theartofeducation/aoeu-e2e/dispatches \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
-        --data '{"ref": "main"}'
+        --data '{"ref": "main", "event_type": "opened"}'
