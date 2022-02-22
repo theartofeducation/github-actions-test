@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        curl -X POST https://api.github.com/repos/theartofeducation/aoeu-e2e/dispatches \
+        curl -X POST \
         -H "Accept: application/vnd.github.everest-preview+json" \ "Content-Type: application/json" \
+        https://api.github.com/repos/theartofeducation/aoeu-e2e/dispatches \
         -u ${{ secrets.ACCESS_TOKEN }} \
         --data --raw-field event_type=mytrigger
