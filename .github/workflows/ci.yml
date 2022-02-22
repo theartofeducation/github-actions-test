@@ -1,8 +1,6 @@
 name: github-actions-test ci
 on:
   push:
-  pull_request:
-    types: [opened, reopened]
   workflow_dispatch:
 jobs:
   test:
@@ -13,4 +11,4 @@ jobs:
         curl -X POST https://api.github.com/repos/theartofeducation/aoeu-e2e/actions/workflows/dispatches \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -u ${{ secrets.ACCESS_TOKEN }} \
-        --data '{"ref": "main"}'
+        --data --raw-field event_type=mytrigger
