@@ -9,7 +9,7 @@ workflow which provides feedback utilizing a full suite of automated tests.
 
 ## 📚 Resources:
 
-* Github Actions experience is helpful but not necessary. Documentation on [creating a repository dispatch event](https://github.com/theartofeducation) 
+* Github Actions experience is helpful but not necessary. Documentation on [creating a repository dispatch event](https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event) 
 is available for further reading.
 
 * If Github Actions is new to you, keep in mind that the file of the format has to follow a specific pattern. You can read more 
