@@ -18,8 +18,10 @@ about this format in the [Workflow syntax for Github Actions document](https://d
 * Since the [AOEU-E2E](https://github.com/theartofeducation/aoeu-e2e) repository is private, you will need the 
 Github Actions Test ACCESS_TOKEN to run the trigger successfully. This is located in the Software Engineering Team section in our Password Manager.
 ## 📝 Notes: 
+
 * No need to clone the github-actions-test repository. Just follow the outlined steps and you will get where you want to be. 
 ## 🚶🏽 Steps:
+
 1. From your repository, open your ci.yml file found in the .github->workflows folder
 2. Copy the github workflow in the [ci.yml in this repository](/github-actions-test/.github/workflows/ci.yml
 3. Add the copied workflow into your repository's ci.yml
@@ -42,3 +44,43 @@ Github Actions Test ACCESS_TOKEN to run the trigger successfully. This is locate
     100    64    0     0  100    64      0    374 --:--:-- --:--:-- --:--:--   372
 ```
 14. ✨ Watch the magic happen in the [aoeu-e2e workflows page](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/ci.yml)
+
+## 🤔 What's Happening here?:
+
+* In this scenario, we have two separate repos that need to "talk" to one another to get feedback. 
+   * Repo A = the E2E tests that we need to trigger to run
+   * Repo B = any repo in the AOEU orgnization, public or private
+
+* Repo A Setup:
+   * Within the Github Actions Workflow file, the [repository_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch) webhook event payload is required. This enables the /dispatch url to run successfully from Repo B. 
+   * Also required is the [workflow_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) webhook event. The /dispatch url will fail without this event. 
+
+* What Repo A Setup looks like: 
+```on:
+  repository_dispatch:
+  workflow_dispatch:
+  push:
+```
+* Repo B Setup:
+   * Within the Github Actions Workflow file, there is the corresponding [repository_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch) webhook event payload. This is required. 
+   * In the `jobs:` action, you'll  have the `test:`, `name:` (use any name that is recognizable to you), `runs-on:`, `steps:`, and `-run:`.
+   * Included in the `-run:` is the url that calls the E2E dispatch workflow, with the `ACESS_TOKEN` that validates the credentials. The `-d '{"ref":"main"}'` referrences the branch you want to run the tests against in the E2E repo. 
+   * 🌶️ Hot Tip: You can run against any branch in E2E by changing the branch name of the `ref`. Example: '{"ref":"`insert-github-branch-here`"}'`
+
+* What Repo B Setup looks like: 
+   * ```name: github-actions-test ci
+        on:
+        push:
+        workflow_dispatch:
+        jobs:
+        test:
+            name: Run GA Workflow from E2E
+            runs-on: ubuntu-latest
+            steps:
+            - run: |
+                curl \
+                -X POST \
+                -H "Accept: application/vnd.github.everest-preview+json" \
+                https://api.github.com/repos/theartofeducation/aoeu-e2e/actions/workflows/ci.yml/dispatches \
+                -u ${{ secrets.ACCESS_TOKEN }} \
+                -d '{"ref":"main"}'
