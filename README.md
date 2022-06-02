@@ -22,19 +22,20 @@ Github Actions Test ACCESS_TOKEN to run the trigger successfully. This is locate
 * No need to clone the github-actions-test repository. Just follow the outlined steps and you will get where you want to be. 
 ## 🚶🏽 Steps:
 
+1. Do you have a ci.yml file in your .github folder? Do you have a .github folder? If not, from your repository, create a .github folder. Create a workflows folder inside of your .github folder. Then create a file named ci.yml. This is the file you will work from.
 1. From your repository, open your ci.yml file found in the .github->workflows folder
-2. Copy the github workflow in the [ci.yml in this repository](/github-actions-test/.github/workflows/ci.yml
-3. Add the copied workflow into your repository's ci.yml
-4. In your browser, open up the repository you are using in github
-5. Click the repository settings and click "Secrets" from the left hand navigation menu
-6. Click "Actions"
-7. Click "New repository secret"
-8. Open the Software Engineering Team in the Password Manager and copy the Github Actions Test ACCESS_TOKEN value
-9. Back in Github, in the name field, input ACCESS_TOKEN 
-10. In the value field, paste the ACCESS_TOKEN value
-11. Click "Add Secret"
-12. Back in your repository on your local environment, make any change to your code and push to your current branch
-13. In your branch in Github, you should see a successful check of the API call to the E2E repository
+1. Copy the github workflow in the [ci.yml in this repository](/github-actions-test/.github/workflows/ci.yml
+1. Add the copied workflow into your repository's ci.yml
+1. In your browser, open up the repository you are using in github
+1. Click the repository settings and click "Secrets" from the left hand navigation menu
+1. Click "Actions"
+1. Click "New repository secret"
+1. Open the Software Engineering Team in the Password Manager and copy the Github Actions Test ACCESS_TOKEN value
+1. Back in Github, in the name field, input ACCESS_TOKEN 
+1. In the value field, paste the ACCESS_TOKEN value
+1. Click "Add Secret"
+1. Back in your repository on your local environment, make any change to your code and push to your current branch
+1. In your branch in Github, you should see a successful check of the API call to the E2E repository
  ```Run curl \
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
@@ -43,7 +44,7 @@ Github Actions Test ACCESS_TOKEN to run the trigger successfully. This is locate
     100    64    0     0  100    64      0    374 --:--:-- --:--:-- --:--:--   372
     100    64    0     0  100    64      0    374 --:--:-- --:--:-- --:--:--   372
 ```
-14. ✨ Watch the magic happen in the [aoeu-e2e workflows page](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/ci.yml)
+15. ✨ Watch the magic happen in the [aoeu-e2e workflows page](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/ci.yml)
 
 ## 🤔 What's Happening here?:
 
