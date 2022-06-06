@@ -19,6 +19,7 @@ jobs:
         github-token: ${{ secrets.ACCESS_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
+            user-agent: 'Awesome-Octocat-App'
             owner: 'theartofeducation',
             repo: 'aoeu-e2e',
             workflow_id: 'ci.yml',
