@@ -16,9 +16,9 @@ jobs:
          ##-d '{"ref":"chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected"}'
     - uses: actions/github-script@v6
       with:
+        github-token: ${{ secrets.GH_PAT }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
-            github-token: ${{ secrets.GH_PAT }}
             owner: 'theartofeducation',
             repo: 'aoeu-e2e',
             workflow_id: 'ci.yml',
