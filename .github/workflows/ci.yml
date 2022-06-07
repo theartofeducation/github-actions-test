@@ -5,6 +5,10 @@ on:
 jobs:
   test:
     name: Run GA Workflow from E2E
+    uses: aurelien-baudet/workflow-dispatch@v2
+    with:
+      workflow: aoeu-e2e ci
+      wait-for-completion: true
     runs-on: ubuntu-latest
     steps:
     - run: |
