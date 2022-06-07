@@ -1,7 +1,9 @@
 name: github-actions-test ci
+
 on:
   push:
   repository_dispatch:
+
 jobs:
   ping-pong:
     runs-on: ubuntu-latest
