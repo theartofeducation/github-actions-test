@@ -11,7 +11,7 @@ jobs:
       uses: aurelien-baudet/workflow-dispatch@v2
       with:
         workflow: aoeu-e2e ci
-        token: secrets.PERSONAL_TOKEN
+        token: secrets.ACCESS_TOKEN
         wait-for-completion: true
     - run: |
         curl \
