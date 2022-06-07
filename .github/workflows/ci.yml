@@ -17,3 +17,13 @@ jobs:
          https://api.github.com/repos/theartofeducation/aoeu-e2e/actions/workflows/ci.yml/dispatches \
          -u ${{ secrets.ACCESS_TOKEN }} \
          -d '{"ref":"chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected"}'
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The triggering workflow passed'
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The triggering workflow failed'
