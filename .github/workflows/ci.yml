@@ -1,7 +1,8 @@
 name: github-actions-test ci
 on:
   push:
-  repository_dispatch:
+  workflow_dispatch:
+jobs:
   test:
     name: Run GA Workflow from E2E
     runs-on: ubuntu-latest
@@ -14,4 +15,3 @@ on:
          -u ${{ secrets.ACCESS_TOKEN }} \
          -d '{"ref":"chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected"}'
          --data '{"event_type": "completed"}
-
