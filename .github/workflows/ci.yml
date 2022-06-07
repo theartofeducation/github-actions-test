@@ -5,11 +5,13 @@ on:
 jobs:
   test:
     name: Run GA Workflow from E2E
-    with:
-      workflow: aoeu-e2e ci
-      wait-for-completion: true
     runs-on: ubuntu-latest
     steps:
+    - name: Wait for tests to succeed
+      uses: aurelien-baudet/workflow-dispatch@v2
+      with:
+        workflow: aoeu-e2e ci
+        wait-for-completion: true
     - run: |
         curl \
          -X POST \
