@@ -2,8 +2,6 @@ name: github-actions-test ci
 on:
   push:
   workflow_dispatch:
-    inputs:
-      github-token: ${{ secrets.GH_PAT }}
 jobs:
   test:
     name: Run GA Workflow from E2E
