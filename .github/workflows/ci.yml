@@ -13,6 +13,7 @@ jobs:
         workflow: aoeu-e2e ci
         token: ${{ secrets.PERSONAL_TOKEN }}
         wait-for-completion: true
+        outputs: workflow-conclusion
     - run: |
         curl \
          -X POST \
