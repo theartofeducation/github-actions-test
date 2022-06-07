@@ -3,6 +3,8 @@ on:
   push:
   workflow_run:
     workflows: aoeu-e2e ci
+    types:
+      - completed
 jobs:
   test:
     name: Run GA Workflow from E2E
@@ -15,14 +17,3 @@ jobs:
          https://api.github.com/repos/theartofeducation/aoeu-e2e/actions/workflows/ci.yml/dispatches \
          -u ${{ secrets.ACCESS_TOKEN }} \
          -d '{"ref":"chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected"}'
-    ##- uses: actions/github-script@v6
-      ##with:
-        ##script: |
-          ##await github.rest.actions.createWorkflowDispatch({
-            ##owner: 'theartofeducation',
-            ##repo: 'aoeu-e2e',
-            ##workflow_id: 'ci.yml',
-            ##ref: 'chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected'
-          ##})
-      ##env:
-        ##ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
