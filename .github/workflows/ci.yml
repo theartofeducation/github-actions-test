@@ -1,12 +1,13 @@
 name: github-actions-test ci
 on:
   push:
-  workflow_dispatch:
+  repository_dispatch:
 jobs:
   test:
     name: Run GA Workflow from E2E
     runs-on: ubuntu-latest
     steps:
+    - name: PING - Dispatch initiating repository event
     - run: |
         curl \
          -X POST \
