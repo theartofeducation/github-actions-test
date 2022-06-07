@@ -25,11 +25,13 @@ jobs:
             ##workflow_id: 'ci.yml',
             ##ref: 'chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected'
           ##})
-     - uses: octokit/request-action@v2.x
-        id: create_check_run
-        with:
-          route: POST /repos/theartofeducation/aoeu-e2e/actions/workflows/ci.yml/dispatches
-          owner: octokit
-          repo: aoeu-e2e
-          name: "Test check run"
-          head_sha: ${{ github.sha }}
+    - uses: octokit/request-action@v2.x
+      id: create_check_run
+      with:
+        route: POST /repos/theartofeducation/aoeu-e2e/actions/workflows/ci.yml/dispatches
+        owner: octokit
+        repo: aoeu-e2e
+        name: "Test check run"
+        head_sha: ${{ github.sha }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
