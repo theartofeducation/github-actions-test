@@ -7,15 +7,13 @@ jobs:
     name: Run GA Workflow from E2E
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out E2E repository
         uses: actions/checkout@v3
         with:
           repository: theartofeducation/e2e
-          ref: @chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+          ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           token: ${{ secrets.ACCESS_TOKEN }}
-          path: ./.github/actions/e2e
-      - name: Run Tests
-        uses: ./.github/actions/e2e/ci.yml
+          path: ./.github/actions/e2e/ci.yml
         if: ${{ success() }}
             echo The tests passed!
       
