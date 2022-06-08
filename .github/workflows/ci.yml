@@ -17,8 +17,7 @@ jobs:
       - name: Run Tests
         uses: ./.github/actions/e2e/ci.yml
         if: ${{ success() }}
-        run: |
-          echo The tests passed!
+            echo The tests passed!
       
   
     #runs-on: ubuntu-latest
