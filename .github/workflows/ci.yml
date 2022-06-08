@@ -11,7 +11,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: theartofeducation/e2e
-          token: ${{ secrets.ACCESS_TOKEN }}
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           path: ./.github/actions/e2e/ci.yml
         if: ${{ success() }}
