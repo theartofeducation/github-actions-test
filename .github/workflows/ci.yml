@@ -12,15 +12,16 @@ on:
 jobs:
   test:
     name: Run GA Workflow from E2E
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-  call-workflow-passing-data:
-    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
-    with:
-      username: DollyParton
-    secrets:
-      envPAT: ${{ secrets.ACCESS_TOKEN }}
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          repository: theartofeducation/e2e
+          ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: ./.github/actions/e2e
+      - name: Run my action
+        uses: ./.github/actions/e2e/ci.yml
   
     #runs-on: ubuntu-latest
     #steps:
