@@ -19,9 +19,6 @@ jobs:
         if: ${{ success() }}
         run: |
           echo The tests passed!
-        if: ${{ failure() }}
-        run: |
-          😱 The job has failed! Let's figure out why
       
   
     #runs-on: ubuntu-latest
