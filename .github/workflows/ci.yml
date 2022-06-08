@@ -1,17 +1,11 @@
 name: github-actions-test ci
 on:
   push:
-  workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
-    secrets:
-      envPAT:
-        required: true
+
 jobs:
   test:
     name: Run GA Workflow from E2E
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
