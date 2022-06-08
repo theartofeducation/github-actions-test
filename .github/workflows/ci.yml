@@ -16,10 +16,12 @@ jobs:
           path: ./.github/actions/e2e
       - name: Run Tests
         uses: ./.github/actions/e2e/ci.yml
-      - name: Success! The Tests have passed!
-        if: ${{ success() }}  
-      - name: 😱 The job has failed! Let's figure out why
+        if: ${{ success() }}
+        run: |
+          echo The tests passed!
         if: ${{ failure() }}
+        run: |
+          😱 The job has failed! Let's figure out why
       
   
     #runs-on: ubuntu-latest
