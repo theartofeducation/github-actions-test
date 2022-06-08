@@ -14,8 +14,13 @@ jobs:
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           token: ${{ secrets.ACCESS_TOKEN }}
           path: ./.github/actions/e2e
-      - name: Run my action
+      - name: Run Tests
         uses: ./.github/actions/e2e/ci.yml
+      - name: Success! The Tests have passed!
+        if: ${{ success() }}  
+      - name: 😱 The job has failed! Let's figure out why
+        if: ${{ failure() }}
+      
   
     #runs-on: ubuntu-latest
     #steps:
