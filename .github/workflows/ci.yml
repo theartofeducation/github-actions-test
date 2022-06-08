@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.4
   call-workflow-passing-data:
-    uses: theartofeducation/aoeu-e2e/actions/workflows/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
     with:
       username: DollyParton
     secrets:
