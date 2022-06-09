@@ -14,9 +14,9 @@ jobs:
         if: github.event.push.head.repo.full_name == github.repository
         uses: theartofeducation/aoeu-e2e@main
         with:
-          repository: theartofeducation/aoeu-e2e
-          path: theartofeducation/aoeu-e2e/.github/workflows/ci.yml
-          ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+          repository: 'theartofeducation/aoeu-e2e'
+          path: 'theartofeducation/aoeu-e2e/.github/workflows/ci.yml'
+          ref: 'chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected'
           token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Install dependencies
