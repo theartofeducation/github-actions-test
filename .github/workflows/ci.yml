@@ -20,7 +20,7 @@ jobs:
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Run my action
-        uses: theartofeducation/aoeu-e2e/.github/actions/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+        uses: actions/checkout@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
 
       - name: Install dependencies
         run: yarn install
