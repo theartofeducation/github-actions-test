@@ -19,7 +19,7 @@ jobs:
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: Run Tests
-        uses: theartofeducation/aoeu-e2e@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+        uses: theartofeducation/aoeu-e2e@main
         with:
           repository: theartofeducation/aoeu-e2e
           path: theartofeducation/aoeu-e2e/.github/workflows/ci.yml
