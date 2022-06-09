@@ -8,9 +8,9 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           repository: theartofeducation/aoeu-e2e
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ref: main
           path: ./.github/actions/aoeu-e2e
       - name: Run my action
