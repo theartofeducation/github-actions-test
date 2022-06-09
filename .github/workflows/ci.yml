@@ -17,3 +17,33 @@ jobs:
           repository: theartofeducation/aoeu-e2e
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           token: ${{ secrets.PERSONAL_TOKEN }}
+          
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Lint
+        run: yarn lint
+
+      - name: Run Prettier
+        run: yarn prettier --check .
+
+      - name: Set-Up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install and Run Cypress API Tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: true
+          start: yarn run test:api
+        env:
+          CYPRESS_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          CYPRESS_PRODUCT_SERVICE_BASE_URL: ${{ secrets.PRODUCT_SERVICE_BASE_URL}}
+          CYPRESS_PRODUCT_SERVICE_USERNAME: ${{ secrets.PRODUCT_SERVICE_USERNAME}}
+          CYPRESS_PRODUCT_SERVICE_PASSWORD: ${{ secrets.PRODUCT_SERVICE_PASSWORD}}
+          CYPRESS_EMAIL: ${{ secrets.EMAIL }}
+          CYPRESS_PASSWORD: ${{ secrets.PASSWORD }}
+          CYPRESS_BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+          CYPRESS_BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          CYPRESS_QA_USER_ID: ${{ secrets.QA_USER_ID}}
