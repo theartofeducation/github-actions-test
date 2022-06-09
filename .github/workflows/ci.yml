@@ -20,7 +20,7 @@ jobs:
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Run my action
-        uses: actions/checkout@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: yarn install
