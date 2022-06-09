@@ -11,7 +11,7 @@ jobs:
         with:
           repository: theartofeducation/aoeu-e2e
           ref: main
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           path: ./.github/actions/aoeu-e2e
       - name: Run my action
         uses: ./.github/actions/aoeu-e2e/ci.yml
