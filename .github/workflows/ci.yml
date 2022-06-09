@@ -4,6 +4,14 @@ on:
   workflow_dispatch:
 jobs:
   checkout-repository:
-    name: Run GA Workflow from E2E
-    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@main
-    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          repository: theartofeducation/aoeu-e2e
+          ref: main
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          path: ./.github/actions/aoeu-e2e
+      - name: Run my action
+        uses: ./.github/actions/aoeu-e2e/ci.yml
+
