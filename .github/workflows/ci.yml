@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: Check out E2E repository
         uses: actions/checkout@v3
-        uses: theartofeducation/aoeu-e2e/.github/actions/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
         ## fix found here: https://github.com/rectorphp/rector/commit/2243a814457690f61b38cfbb63421f7812a3b43c
         if: github.event.push.head.repo.full_name == github.repository
         with:
@@ -20,6 +19,8 @@ jobs:
           workflow: Update Graphql
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
           token: ${{ secrets.PERSONAL_TOKEN }}
+      - name: Run Tests
+        uses: theartofeducation/aoeu-e2e/.github/actions/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
 
       - name: Install dependencies
         run: yarn install
