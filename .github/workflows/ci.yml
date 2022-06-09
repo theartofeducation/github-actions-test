@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Run Tests
         uses: theartofeducation/aoeu-e2e@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
-         with:
+        with:
           repository: theartofeducation/aoeu-e2e
           path: theartofeducation/aoeu-e2e/blob/main/.github/workflows/ci.yml
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
