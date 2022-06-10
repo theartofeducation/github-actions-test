@@ -20,8 +20,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: theartofeducation/aoeu-e2e
-          ref: main
-          path: .github/workflows/ci.yml
+          path: .github/workflows/aoeu-e2e-ci
           token: ${{ secrets.ACCESS_TOKEN }}
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
    
