@@ -7,6 +7,12 @@ on:
 jobs:
   checkout-repository:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read|write
+      checks: read|write
+      contents: read|write
+      id-token: read|write
+      statuses: read|write
     steps:
       ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
       - name: Fix up git URLs
