@@ -12,12 +12,15 @@ jobs:
       - name: Fix up git URLs
         run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig 
 
-      - name: Check out repository
-        uses: actions/checkout@v2.3.4
+      - name: Checkout Repo
+        uses: actions/checkout@v2  
+
+      - name: Check out E2E Repo
+        uses: actions/checkout@v2
         with:
           repository: theartofeducation/aoeu-e2e
-          ref: ci.yml
-          path: ./.github/actions/aoeu-e2e
+          ref: main
+          path: ./.github/actions/ci.yml
           token: ${{ secrets.ACCESS_TOKEN }}
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
    
