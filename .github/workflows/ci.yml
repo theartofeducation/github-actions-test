@@ -11,14 +11,17 @@ jobs:
       ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
       - name: Fix up git URLs
         run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig
+      - name: Use Deploy Key
+        uses: webfactory/ssh-agent@v0.5.4
+              with:
+                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  
       - name: Check out repository
         uses: actions/checkout@v2.3.4
         with:
           repository: theartofeducation/aoeu-e2e
           ref: main
-          path: https://github.com/theartofeducation/aoeu-e2e/blob/fcf647cc3fbdcfd2318e5b2d150418aefa4859f2/.github/workflows/ci.yml
+          path: ./.github/workflows/ci.yml
           token: ${{ secrets.ACCESS_TOKEN}}
-          ssh-key: ${{ secrets.SERVICE_ACCOUNT_SSH_KEY }}
       - name: Run my action
         uses: ./.github/workflows/ci.yml
         with:
