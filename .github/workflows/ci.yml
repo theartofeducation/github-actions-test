@@ -18,7 +18,7 @@ jobs:
           repository: theartofeducation/aoeu-e2e
           ref: main
           path: ./.github/workflows/ci.yml
-          token: ${{ secrets.ACCESS_TOKEN}}
+          token: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Use Deploy Key
         run: |
            mkdir ~/.ssh
