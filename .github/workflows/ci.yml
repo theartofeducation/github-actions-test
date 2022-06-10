@@ -11,7 +11,9 @@ jobs:
       ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
       - name: Fix up git URLs
         run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig
+
       - name: Use Deploy Key
+      - actions/checkout@v2
         uses: webfactory/ssh-agent@v0.5.4
           with:
             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  
