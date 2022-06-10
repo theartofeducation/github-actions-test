@@ -8,10 +8,6 @@ jobs:
   checkout-repository:
     runs-on: ubuntu-latest
     steps:
-      - name: Use Deploy Key
-        uses: webfactory/ssh-agent@v0.5.4
-          with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
       - name: Fix up git URLs
         run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig 
@@ -23,6 +19,11 @@ jobs:
           ref: main
           path: ./.github/workflows/ci.yml
           token: ${{ secrets.ACCESS_TOKEN}}
+      - name: Use Deploy Key
+        run: |
+           mkdir ~/.ssh
+           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519.pub
+           chmod 600 ~/.ssh/id_ed25519.pub    
       - name: Run my action
         uses: ./.github/workflows/ci.yml
         with:
