@@ -1,7 +1,7 @@
 name: github-actions-test ci
 on:
   pull_request:
-    types: [converted_to_draft, ready_for_review]
+    types: [ready_for_review]
   push: 
   workflow_dispatch:
 jobs:
