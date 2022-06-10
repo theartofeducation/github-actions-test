@@ -12,6 +12,11 @@ jobs:
       - name: Fix up git URLs
         run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig 
 
+      - uses: shaunco/ssh-agent@git-repo-mapping
+        with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        repo-mappings: github.com/theartofeducation/aoeu-e2e 
+
       - name: Check out repository
         uses: actions/checkout@v2.3.4
         with:
@@ -19,7 +24,6 @@ jobs:
           ref: main
           path: ./.github/workflows/ci.yml
           token: ${{ secrets.ACCESS_TOKEN }}
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
    
       - name: Run my action
         uses: ./.github/workflows/ci.yml
