@@ -8,9 +8,6 @@ jobs:
   checkout-repository:
     runs-on: ubuntu-latest
     steps:
-      ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
-      - name: Fix up git URLs
-        run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig 
 
       - name: Checkout Repo
         uses: actions/checkout@v2
