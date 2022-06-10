@@ -18,12 +18,9 @@ jobs:
           repository: theartofeducation/aoeu-e2e
           ref: main
           path: ./.github/workflows/ci.yml
-          token: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Use Deploy Key
-        run: |
-           mkdir ~/.ssh
-           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519.pub
-           chmod 600 ~/.ssh/id_ed25519.pub    
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+   
       - name: Run my action
         uses: ./.github/workflows/ci.yml
         with:
