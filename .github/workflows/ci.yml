@@ -16,7 +16,7 @@ jobs:
         with:
           repository: theartofeducation/aoeu-e2e
           ref: main
-          path: ./.github/workflows/ci.yml
+          path: https://github.com/theartofeducation/aoeu-e2e/blob/fcf647cc3fbdcfd2318e5b2d150418aefa4859f2/.github/workflows/ci.yml
           token: ${{ secrets.ACCESS_TOKEN}}
           ssh-key: ${{ secrets.SERVICE_ACCOUNT_SSH_KEY }}
       - name: Run my action
