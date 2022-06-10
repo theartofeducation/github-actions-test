@@ -15,8 +15,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2.3.4
         with:
-          repository: theartofeducation/aoeu-e2e/actions
-          ref: main
+          repository: theartofeducation/aoeu-e2e/
+          ref: ci.yml
           path: ./.github/actions/aoeu-e2e
           token: ${{ secrets.ACCESS_TOKEN }}
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
