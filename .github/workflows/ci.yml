@@ -4,8 +4,10 @@ on:
     types: [ready_for_review]
   push: 
   workflow_dispatch:
+
 jobs:
-  checkout-repository:
+  test:
+    name: Checkout the E2E Repository and Run tests
     runs-on: ubuntu-latest
     steps:
 
@@ -13,8 +15,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
-          token: ${{ secrets.ACCESS_TOKEN }}
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Check out E2E Repo
         uses: actions/checkout@v2
