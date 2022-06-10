@@ -1,7 +1,6 @@
 name: github-actions-test ci
 on:
-  push:
-  pull-request:
+  pull_request:
     types: [converted_to_draft, ready_for_review]
 jobs:
   checkout-repository:
