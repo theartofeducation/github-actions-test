@@ -4,15 +4,10 @@ on:
     types: [converted_to_draft, ready_for_review]
   push: 
   workflow_dispatch:
+  permissions: read-all
 jobs:
   checkout-repository:
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      checks: read
-      contents: read
-      id-token: read
-      statuses: read
     steps:
       ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
       - name: Fix up git URLs
