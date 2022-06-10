@@ -19,7 +19,7 @@ jobs:
           ref: main
           path: ./.github/actions/ci.yml
           token: ${{ secrets.ACCESS_TOKEN }}
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
    
       - name: Run my action
         uses: ./.github/workflows/ci.yml
