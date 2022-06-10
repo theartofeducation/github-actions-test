@@ -4,7 +4,6 @@ on:
     types: [converted_to_draft, ready_for_review]
   push: 
   workflow_dispatch:
-  permissions: read-all
 jobs:
   checkout-repository:
     runs-on: ubuntu-latest
@@ -17,8 +16,9 @@ jobs:
         with:
           repository: theartofeducation/aoeu-e2e
           ref: main
-          token: ${{ secrets.ACCESS_TOKEN}}
           path: ./.github/workflows/ci.yml
+          token: ${{ secrets.ACCESS_TOKEN}}
+          ssh-key: ${{ secrets.SERVICE_ACCOUNT_SSH_KEY }}
       - name: Run my action
         uses: ./.github/workflows/ci.yml
         with:
