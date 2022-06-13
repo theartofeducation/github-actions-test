@@ -4,15 +4,13 @@ on:
     types: [ready_for_review]
   push: 
   workflow_dispatch:
-  env: 
-    GIT_TERMINAL_PROMPT: 1
 
 jobs:
   test:
     name: Checkout the E2E Repository and Run tests
     runs-on: ubuntu-latest
-  
-
+    env: 
+      GIT_TERMINAL_PROMPT: 1
     steps:
 
       - name: Suppress Runner Error
