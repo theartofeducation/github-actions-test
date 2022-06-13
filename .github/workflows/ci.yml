@@ -10,7 +10,7 @@ jobs:
     name: Checkout the E2E Repository and Run tests
     runs-on: ubuntu-latest
     env: 
-      GIT_TERMINAL_PROMPT: 1
+      GIT_TERMINAL_PROMPT=1
     steps:
 
       - name: Suppress Runner Error
