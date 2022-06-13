@@ -5,8 +5,7 @@ on:
   push: 
   workflow_dispatch:
   env: 
-    name: enable terminal prompts
-    run: GIT_TERMINAL_PROMPT=1
+    GIT_TERMINAL_PROMPT: 1
 
 jobs:
   test:
