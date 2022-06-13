@@ -22,18 +22,23 @@ jobs:
 
     ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
       ##- name: Fix up git URLs
-        ##run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig      
+        ##run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig    
 
       - name: Check out E2E Repo
         uses: actions/checkout@v2
-        run: |
-          run: git clone --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
         with:
-          token: ${{ secrets.ACCESS_TOKEN }}
           repository: theartofeducation/aoeu-e2e
           ref: main
+          # GitHub's personal access token with access to `my-organization/awesome-action`
+          token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
-          path: ./.github/actions
+          path: ./.github/actions/ci.yml
+
+      - uses: ./.github/actions/ci.yml  
+
+      ##- name: Check out E2E Repo
+        ##run: |
+          ##run: git clone --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
    
       - name: Run my action
         uses: ./.github/actions/aoeu-e2e-ci
