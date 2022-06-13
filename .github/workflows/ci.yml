@@ -33,9 +33,9 @@ jobs:
           # GitHub's personal access token with access to `my-organization/awesome-action`
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
-          path: ./.github/actions/ci.yml
+          path: aoeu-e2e
 
-      - uses: ./.github/actions/ci.yml  
+      - uses: .github/actions/ci.yml  
 
       ##- name: Check out E2E Repo
         ##run: |
