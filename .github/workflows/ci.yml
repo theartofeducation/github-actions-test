@@ -31,9 +31,9 @@ jobs:
           ref: main
           ssh-strict: false
           # GitHub's personal access token with access to `my-organization/awesome-action`
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.PERSONAL_TOKEN }}
           persist-credentials: false
-          path: aoeu-e2e
+          path: .github/actions/ci.yml
 
       - uses: .github/actions/ci.yml  
 
