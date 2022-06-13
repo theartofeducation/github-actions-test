@@ -39,7 +39,7 @@ jobs:
         ##run: |
           ##run: git clone --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
    
-      - name: Run my action
+      - name: Run my workflow action
         uses: ./.github/actions/aoeu-e2e-ci
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
