@@ -30,7 +30,7 @@ jobs:
           repository: theartofeducation/aoeu-e2e
           ref: main
           # GitHub's personal access token with access to `my-organization/awesome-action`
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           persist-credentials: false
           path: ./.github/actions/ci.yml
 
