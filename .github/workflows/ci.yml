@@ -35,8 +35,6 @@ jobs:
           persist-credentials: false
           path: .github/actions/ci.yml
 
-      - uses: .github/actions/ci.yml  
-
       ##- name: Check out E2E Repo
         ##run: |
           ##run: git clone --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
