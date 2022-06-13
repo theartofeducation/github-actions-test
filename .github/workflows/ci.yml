@@ -27,7 +27,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          username: ${{ secrets.GIT_USER }}
           repository: theartofeducation/aoeu-e2e
           ref: main
           persist-credentials: false
