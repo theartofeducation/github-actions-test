@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Suppress Runner Error
+        run: git config --global init.defaultBranch main
+
       - name: Checkout Main Repo
         uses: actions/checkout@v2
         with:
@@ -25,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: theartofeducation/aoeu-e2e
-          ref: refs/origin/main
+          ref: main
           persist-credentials: false
           path: ./.github/actions/ci.yml
    
