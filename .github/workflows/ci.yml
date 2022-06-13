@@ -29,10 +29,10 @@ jobs:
           # The ACCESS.TOKEN needs to be added to this repository also
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
-          path: .github/actions/ci.yml
+          path: ./ci.yml
 
       - name: Run E2E Workflow
         run: |
-          git clone --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
+          git init --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
 
 
