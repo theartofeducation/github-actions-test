@@ -4,17 +4,21 @@ on:
     types: [ready_for_review]
   push: 
   workflow_dispatch:
+  env: 
+    name: enable terminal prompts
+    run: GIT_TERMINAL_PROMPT=1
 
 jobs:
   test:
     name: Checkout the E2E Repository and Run tests
     runs-on: ubuntu-latest
+  
+
     steps:
 
       - name: Suppress Runner Error
         run: |
           git config --global init.defaultBranch main
-          GIT_TERMINAL_PROMPT=1
 
       - name: Checkout Main Repo
         uses: actions/checkout@v2
