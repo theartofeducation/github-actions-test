@@ -32,7 +32,7 @@ jobs:
           path: ./ci.yml
 
       - name: Run E2E Workflow
-        run: |
-          git init --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
+        uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@main
+         ##git clone --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
 
 
