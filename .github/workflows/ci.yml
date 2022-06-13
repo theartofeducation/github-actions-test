@@ -23,9 +23,9 @@ jobs:
       - name: Check out E2E Repo
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.ACCESS_TOKEN }}
           repository: theartofeducation/aoeu-e2e
           ref: refs/heads/main
-          token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
           ssh-key: ${{ secrets.PERSONAL_TOKEN }}
           path: actions/workflows/ci.yml
