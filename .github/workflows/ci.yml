@@ -12,7 +12,9 @@ jobs:
     steps:
 
       - name: Suppress Runner Error
-        run: git config --global init.defaultBranch main
+        run: |
+          git config --global init.defaultBranch main
+          GIT_TERMINAL_PROMPT=1
 
       - name: Checkout Main Repo
         uses: actions/checkout@v2
