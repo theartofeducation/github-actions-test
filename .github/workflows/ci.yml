@@ -9,8 +9,6 @@ jobs:
   test:
     name: Checkout the E2E Repository and Run tests
     runs-on: ubuntu-latest
-    env: 
-      GIT_TERMINAL_PROMPT=1
     steps:
 
       - name: Suppress Runner Error
@@ -28,6 +26,8 @@ jobs:
 
       - name: Check out E2E Repo
         uses: actions/checkout@v2
+        run: |
+          run: git clone --single-branch --no-tags --depth 1 -b master https://@github.com/theartofeducation/aoeu.e2e ./.github/actions/ci.yml
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: theartofeducation/aoeu-e2e
