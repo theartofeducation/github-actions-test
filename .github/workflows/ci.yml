@@ -9,7 +9,6 @@ jobs:
   test:
     name: Checkout the E2E Repository and Run tests
     runs-on: ubuntu-latest
-    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@main
     steps:
 
       - name: Suppress Runner Error
