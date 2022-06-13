@@ -20,8 +20,8 @@ jobs:
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected 
 
     ##Found this fix here: https://github.com/actions/checkout/issues/14#issuecomment-523916396
-      - name: Fix up git URLs
-        run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig      
+      ##- name: Fix up git URLs
+        ##run: echo -e '[url "git@github.com:"]\n  insteadOf = "https://github.com/"' >> ~/.gitconfig      
 
       - name: Check out E2E Repo
         uses: actions/checkout@v2
