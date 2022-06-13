@@ -11,10 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Checkout Repo
+      - name: Checkout Main Repo
         uses: actions/checkout@v2
         with:
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+
+      - name: Check out E2E Repo 
+        run: git config --global init.defaultBranch main   
 
       - name: Check out E2E Repo
         uses: actions/checkout@v2
