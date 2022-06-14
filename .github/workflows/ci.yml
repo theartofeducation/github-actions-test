@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: install package.json
+        run: yarn add package.json
+
       - name: Run Lint
         run: yarn lint
 
