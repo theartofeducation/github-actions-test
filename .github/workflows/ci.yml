@@ -28,4 +28,4 @@ jobs:
           # The ACCESS.TOKEN needs to be added to this repository also
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
-          path: artofeducation/aoeu-e2e/.github/.github/workflows/ci.yml
+          path: ./aoeu-e2e/.github/workflows/aeou-e2e-ci
