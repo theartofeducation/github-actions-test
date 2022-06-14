@@ -26,3 +26,6 @@ jobs:
           ssh-strict: false
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
+      
+      - name: Run my action
+        uses: ./.github/actions/aoeu-e2e/ci.yml
