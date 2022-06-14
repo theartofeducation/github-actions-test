@@ -22,10 +22,7 @@ jobs:
         with:
           repository: theartofeducation/aoeu-e2e
           ref: main
-          path: ./aoeu-e2e/.github/actions/ci.yml
+          path: .github/workflows/ci.yml
           ssh-strict: false
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
-      
-      - name: Run my action
-        uses: ./.github/actions/aoeu-e2e/ci.yml
