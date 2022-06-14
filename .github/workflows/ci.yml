@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [ready_for_review]
   push: 
-  workflow_dispatch:
+  workflow_run:
 
 jobs:
   test:
