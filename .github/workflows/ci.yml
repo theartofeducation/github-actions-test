@@ -30,15 +30,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: install package.json
-        run: yarn add package.json
-
-      - name: Run Lint
-        run: yarn lint
-
-      - name: Run Prettier
-        run: yarn prettier --check .
-
       - name: Set-Up Node
         uses: actions/setup-node@v2
         with:
