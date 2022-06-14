@@ -20,7 +20,7 @@ jobs:
       - name: Check out E2E Repo and Run E2E Tests
         uses: actions/checkout@v2
         with:
-          repository: theartofeducation/aoeu-e2e
+          repository: git@github.com:theartofeducation/aoeu-e2e.git
           ref: main
           path: .github/workflows/ci.yml
           ssh-strict: false
