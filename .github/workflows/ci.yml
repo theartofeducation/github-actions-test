@@ -22,7 +22,21 @@ jobs:
         with:
           repository: theartofeducation/aoeu-e2e
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
-          path: .github/workflows/ci.yml
+          path: /.github/workflows/ci.yml
           ssh-strict: false
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Lint
+        run: yarn lint
+
+      - name: Run Prettier
+        run: yarn prettier --check .
+
+      - name: Set-Up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
