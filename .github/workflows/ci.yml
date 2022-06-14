@@ -4,6 +4,9 @@ on:
     types: [ready_for_review]
   push: 
   workflow_run:
+  workflows: [aeou-e2e ci]
+    types:
+      - completed
 
 jobs:
   test:
