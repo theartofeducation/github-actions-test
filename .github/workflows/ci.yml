@@ -22,7 +22,7 @@ jobs:
         with:
           repository: theartofeducation/aoeu-e2e
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
-          path: /.github/workflows/ci.yml
+          path: .github/workflows/ci.yml
           ssh-strict: false
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
