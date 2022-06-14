@@ -35,7 +35,10 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: Install and Run Cypress API Tests
+      - name: Install Cypress
+        run: yarn add cypress
+
+      - name: Run Cypress API Tests
         uses: cypress-io/github-action@v2
         with:
           install: true
