@@ -35,8 +35,16 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: Install Cypress
-        run: yarn add cypress
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - run: yarn add cypress
+      - uses: cypress-io/github-action@v4
+        with:
+          install: true
 
       - name: Run Cypress API Tests
         uses: cypress-io/github-action@v2
