@@ -22,8 +22,7 @@ jobs:
         with:
           repository: theartofeducation/aoeu-e2e
           ref: main
+          path: ./aoeu-e2e/.github/actions/ci.yml
           ssh-strict: false
-          # The ACCESS.TOKEN needs to be added to this repository also
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
-          path: ./aoeu-e2e/.github/actions/ci.yml
