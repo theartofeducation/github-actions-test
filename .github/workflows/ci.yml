@@ -16,7 +16,7 @@ jobs:
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml --ref main --repo theartofeducation/aoeu-e2e
           gh workflow view ci.yml --repo theartofeducation/aoeu-e2e
-          gh run watch 2503703820 --repo theartofeducation/aoeu-e2e --exit-status
+          gh api "/repos/theartofeducation/aoeu-e2e/actions/runs?status=in_progress" -q '. | select(.total_count == 1) | .workflow_runs[0].id'
 
 
      
