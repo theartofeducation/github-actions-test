@@ -24,7 +24,7 @@ jobs:
       - name: run e2e tests
         run: |
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
-          gh api -X GET /theartofeducation/e2e/workflows --jq='ci.yml'
+          gh api -X GET /theartofeducation/e2e
           gh workflow run ci.yml -f logLevel=warning -f tags=false -f environment=main
 
      
