@@ -16,7 +16,7 @@ jobs:
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml --ref main --repo theartofeducation/aoeu-e2e
           gh workflow view ci.yml --repo theartofeducation/aoeu-e2e
-          gh run watch --job "Install and Run Cypress API Tests" --repo theartofeducation/aoeu-e2e && notify-send "Run is Complete!"
+          gh run watch -i1 --repo theartofeducation/aoeu-e2e && notify-send "Run is Complete!"
 
 
      
