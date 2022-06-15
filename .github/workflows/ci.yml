@@ -15,7 +15,7 @@ jobs:
         uses: Sibz/github-status-action@v1
         with:
           repository: theartofeducation/aoeu-e2e
-          owner: "Judy Mosley <judymosley@theartofeducation.edu>"
+          owner: "@jmosley5"
           authToken: ${{ secrets.ACCESS_TOKEN }}
           context: 'E2E tests'
           description: 'Tests pending deploy'
