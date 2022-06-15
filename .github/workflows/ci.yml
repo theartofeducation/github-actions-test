@@ -16,7 +16,7 @@ jobs:
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml --ref main --repo theartofeducation/aoeu-e2e
           gh workflow view ci.yml --repo theartofeducation/aoeu-e2e
-          gh run view --job "Run Lint, Prettier, and Cypress (API) Automation Tests" --repo theartofeducation/aoeu-e2e --log
+          gh run view --job Run Lint, Prettier, and Cypress (API) Automation Tests --repo theartofeducation/aoeu-e2e --log
 
 
      
