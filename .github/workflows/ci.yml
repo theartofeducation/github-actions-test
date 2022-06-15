@@ -22,6 +22,8 @@ jobs:
           persist-credentials: false
 
       - name: run e2e tests
-        run: gh workflow run ci.yml -f logLevel=warning -f tags=false -f environment=main
+        run: |
+          gh auth login
+          gh workflow run ci.yml -f logLevel=warning -f tags=false -f environment=main
 
      
