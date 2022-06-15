@@ -4,6 +4,7 @@ on:
     types: [ready_for_review]
   push:
 jobs:
+
   run-tests-from-e2e:
     runs-on: ubuntu-latest
     steps:
@@ -11,23 +12,22 @@ jobs:
         run: |
           git config --global init.defaultBranch main
 
-      - uses: actions/checkout@v3
-      - name: Build with logs
-        run: |
-          mkdir ${{ runner.temp }}/build_logs
-          ./build.sh --log-path ${{ runner.temp }}/build_logs
-      - name: Upload logs on fail
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: Build failure logs
-          path: ${{ runner.temp }}/build_logs
-
       - name: run e2e tests
         run: |
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml --ref chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected --repo theartofeducation/aoeu-e2e
           gh run view --log --job 6906125036 --repo theartofeducation/aoeu-e2e
+
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The triggering workflow passed'
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The triggering workflow failed'
 
 
      
