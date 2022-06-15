@@ -15,7 +15,7 @@ jobs:
         run: |
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml --ref main --repo theartofeducation/aoeu-e2e
-          gh workflow view 2503607853 --repo theartofeducation/aoeu-e2e --ref main
+          gh workflow view 2503607853 --repo theartofeducation/aoeu-e2e
 
 
      
