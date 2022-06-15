@@ -23,7 +23,7 @@ jobs:
 
       - name: run e2e tests
         run: |
-          gh auth login --with-token process.env.ACCESS_TOKEN
+          echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml -f logLevel=warning -f tags=false -f environment=main
 
      
