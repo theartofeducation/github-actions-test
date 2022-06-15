@@ -17,7 +17,7 @@ about this format in the [Workflow syntax for Github Actions document](https://d
 
 * Since the [AOEU-E2E](https://github.com/theartofeducation/aoeu-e2e) repository is private, you will need the 
 Github Actions Test ACCESS_TOKEN to run the trigger successfully. This is located in the Software Engineering Team section in our Password Manager.
-## 📝 Notes: 
+## 📝 Notes: test note
 
 * No need to clone the github-actions-test repository. Just follow the outlined steps and you will get where you want to be. 
 ## 🚶🏽 Steps:
