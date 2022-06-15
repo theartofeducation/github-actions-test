@@ -15,7 +15,8 @@ jobs:
         uses: Sibz/github-status-action@v1
         with:
           repository: theartofeducation/aoeu-e2e
-          authToken: ${{ secrets.GITHUB_TOKEN }}
+          author: "Judy Mosley <judymosley@theartofeducation.edu>"
+          authToken: ${{ secrets.ACCESS_TOKEN }}
           context: 'E2E tests'
           description: 'Tests pending deploy'
           # success, error, failure, or pending
