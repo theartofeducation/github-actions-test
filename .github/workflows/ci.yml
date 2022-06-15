@@ -16,7 +16,7 @@ jobs:
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml --ref chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected --repo theartofeducation/aoeu-e2e
           gh workflow view ci.yml --repo theartofeducation/aoeu-e2e
-          gh run watch run tests --repo theartofeducation/aoeu-e2e && notify-send "Run is Complete!"
+          gh run view --log --job "run tests" --repo theartofeducation/aoeu-e2e
 
 
      
