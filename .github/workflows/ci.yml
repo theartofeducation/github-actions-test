@@ -24,9 +24,6 @@ jobs:
           workflow_timeout_seconds: 100 # Default: 300
 
       - name: Use the output run ID
-        run: echo ${{steps.return-dispatch.outputs.distinct_id}}
-
-      - name: Use the output run ID
         run: echo ${{steps.return-dispatch.outputs.run_id}}
           
       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
@@ -35,7 +32,6 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           repo: github-actions-test
           owner: theartofeducation
-          ddistinct_id: ${{ steps.return_dispatch.outputs.distinct_id }}
           run_id: ${{ steps.return_dispatch.outputs.run_id }}
           run_timeout_seconds: 300 # Optional
           poll_interval_ms: 5000 # Optional
