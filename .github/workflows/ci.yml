@@ -38,7 +38,7 @@ jobs:
     steps: 
       - name: test results
         run: | 
-        echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
+          echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
     
 
 
