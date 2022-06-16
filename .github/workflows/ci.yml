@@ -21,7 +21,7 @@ jobs:
           gh run view --log --job 6906125036 --repo theartofeducation/aoeu-e2e
 
   job1:
-    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml
+    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@v1
     with: 
       token: ${{ secrets.ACCESS_TOKEN}}
   job2:
