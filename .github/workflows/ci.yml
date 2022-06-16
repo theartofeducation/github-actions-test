@@ -3,6 +3,9 @@ on:
   pull_request:
     types: [ready_for_review]
   push:
+  workflow_run:
+    workflows: ["aoeu-e2e"]
+    types: [completed]
 jobs:
 
   run-tests-from-e2e:
@@ -18,16 +21,17 @@ jobs:
           gh workflow run ci.yml --ref chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected --repo theartofeducation/aoeu-e2e
           gh run view --log --job 6906125036 --repo theartofeducation/aoeu-e2e
 
-  on-success:
+  retrieve-test-run:
+    steps: 
+      hello-test:
+        uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+        with: 
+          token: ${{ secrets.ACCESS_TOKEN}}
+  job2:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: hello-test
     steps:
-      - run: echo 'The triggering workflow passed'
-  on-failure:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - run: echo 'The triggering workflow failed'
+      - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
 
 
      
