@@ -32,7 +32,7 @@ jobs:
         uses: Codex-/await-remote-run@v1.0.0
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          repo: aoeu-e2e
+          repo: github-actions-test
           owner: theartofeducation
           run_id: ${{ steps.return_dispatch.outputs.run_id }}
           run_timeout_seconds: 300 # Optional
