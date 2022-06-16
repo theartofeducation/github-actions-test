@@ -7,7 +7,6 @@ on:
     workflows: ["aoeu-e2e"]
     types: [completed]
 jobs:
-
   run-tests-from-e2e:
     runs-on: ubuntu-latest
     steps:
@@ -22,8 +21,8 @@ jobs:
           gh run view --log --job 6906125036 --repo theartofeducation/aoeu-e2e
 
   retrieve-test-run:
-    steps: 
-      hello-test:
+    hello-test:
+      steps: 
         uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
         with: 
           token: ${{ secrets.ACCESS_TOKEN}}
