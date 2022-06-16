@@ -5,7 +5,6 @@ on:
   push:
   workflow_run:
     workflows: ["aoeu-e2e"]
-    types: [completed]
 jobs:
   run-tests-from-e2e:
     runs-on: ubuntu-latest
@@ -23,7 +22,8 @@ jobs:
           repo: aoeu-e2e
           owner: theartofeducation
           workflow: ci.yml
-          workflow_timeout_seconds: 120 # Default: 300
+          workflow_inputs: { "run_id": "" } # Optional
+          workflow_timeout_seconds: 100 # Default: 300
 
       - name: Use the output run ID
         run: echo ${{steps.return-dispatch.outputs.run_id}}
