@@ -22,7 +22,6 @@ jobs:
           repo: aoeu-e2e
           owner: theartofeducation
           workflow: ci.yml
-          workflow_inputs: { "run_id": "" } # Optional
           workflow_timeout_seconds: 100 # Default: 300
 
       - name: Use the output run ID
