@@ -3,6 +3,7 @@ on:
   pull_request:
     types: [ready_for_review]
   push:
+
 jobs:
   run-tests-from-e2e:
     runs-on: ubuntu-latest
@@ -21,9 +22,11 @@ jobs:
           owner: theartofeducation
           workflow: ci.yml
           workflow_timeout_seconds: 100 # Default: 300
-          
 
-      - name: Await Remote Run
+      - name: Use the output run ID
+        run: echo ${{steps.return-dispatch.outputs.run_id}}
+          
+      - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.4.0
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
