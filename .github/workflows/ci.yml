@@ -21,6 +21,7 @@ jobs:
           owner: theartofeducation
           workflow: ci.yml
           workflow_timeout_seconds: 100 # Default: 300
+          
 
       - name: Await Remote Run
         uses: Codex-/await-remote-run@v1.4.0
