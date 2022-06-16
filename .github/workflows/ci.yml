@@ -21,7 +21,7 @@ jobs:
           gh run view --log --job 6906125036 --repo theartofeducation/aoeu-e2e
 
   job1:
-    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected
+    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml
     with: 
       token: ${{ secrets.ACCESS_TOKEN}}
   job2:
