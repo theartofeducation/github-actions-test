@@ -14,21 +14,32 @@ jobs:
         run: |
           git config --global init.defaultBranch main
 
+      - name: Dispatch an action and get the run ID
+        uses: codex-/return-dispatch@v1
+        id: return-dispatch
+        with:
+          token: ${{ secrets.ACCESS_TOKEN}} # Note this is NOT GITHUB_TOKEN but a PAT
+          ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected # or refs/heads/target_branch
+          repo: aoeu-e2e
+          owner: theartofeducation
+          workflow: ci.yml
+          workflow_timeout_seconds: 120 # Default: 300
+
+      - name: Use the output run ID
+        run: echo ${{steps.return-dispatch.outputs.run_id}}
+
       - name: run e2e tests
         run: |
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
           gh workflow run ci.yml --ref chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected --repo theartofeducation/aoeu-e2e
           gh run view --log --job 6906125036 --repo theartofeducation/aoeu-e2e
-
-  job1:
-    uses: theartofeducation/aoeu-e2e/.github/workflows/ci.yml@v1
-    with: 
-      token: ${{ secrets.ACCESS_TOKEN}}
-  job2:
-    runs-on: ubuntu-latest
-    needs: hello-test
-    steps:
-      - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
+  
+  return-test-results-from-e2e:
+    steps: 
+      - name: test results
+        run: | 
+        echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
+    
 
 
      
