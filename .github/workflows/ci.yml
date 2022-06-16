@@ -35,7 +35,8 @@ jobs:
           gh run view --log --job 6906125036 --repo theartofeducation/aoeu-e2e
   
   return-test-results-from-e2e:
-    steps: 
+    runs-on: ubuntu-latest
+    steps:
       - name: test results
         run: | 
           echo ${{ secrets.ACCESS_TOKEN }} | gh auth login --with-token
