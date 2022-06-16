@@ -22,9 +22,6 @@ jobs:
           workflow: ci.yml
           workflow_timeout_seconds: 100 # Default: 300
 
-      - name: Use the output run ID
-        run: echo ${{steps.return-dispatch.outputs.run_id}}
-
       - name: Await Remote Run
         uses: Codex-/await-remote-run@v1.4.0
         with:
