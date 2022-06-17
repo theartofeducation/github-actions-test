@@ -2,7 +2,10 @@ name: action.yml
 on:
   pull_request:
   push:
-
+  workflow_run:
+    workflows: test.yml
+    types:
+      - [pending, completed]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,11 +25,11 @@ jobs:
           workflow_timeout_seconds: 300 # Default: 300
       
       - name: Output fetched Run ID
-        run: echo ${{ github.event.workflow_run.run_id }}
+        run: echo ${{ steps.return-dispatch.outputs.run_id }}
 
       - name: Evaluate that the Run ID output has been set
         run: |
-          if [ "${{ steps.return_dispatch.outputs.run_id }}" == "" ]; then
+          if [ "${{ steps.return-dispatch.outputs.run_id }}" == "" ]; then
             echo "Failed to return Run ID"
             exit 1
           fi
