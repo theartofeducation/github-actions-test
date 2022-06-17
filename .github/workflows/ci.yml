@@ -12,24 +12,6 @@ jobs:
         run: |
           git config --global init.defaultBranch main
 
-      - uses: actions/checkout@v3
-      - name: Dispatch and return Run ID
-        id: return_dispatch
-        uses: Codex-/return-dispatch@main
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          ref: ${{ github.ref }}
-          repo: aoeu-e2e
-          owner: theartofeducation
-          workflow: ci.yml
-      - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
-        uses: ./
-        with:
-          token: ${{ github.token }}
-          repo: return-dispatch
-          owner: codex-
-          run_id: ${{ steps.return_dispatch.outputs.run_id }}
-
       - name: Dispatch an action and get the run ID
         uses: codex-/return-dispatch@v1.5.0
         id: return-dispatch
@@ -47,7 +29,7 @@ jobs:
       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.4.0
         with:
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.PERSONAL_TOKEN }}
           repo: github-actions-test
           owner: theartofeducation
           runId: ${{ steps.return_dispatch.outputs.run_id }}
