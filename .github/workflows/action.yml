@@ -13,7 +13,7 @@ jobs:
         uses: codex-/return-dispatch@v1.5.0
         id: return-dispatch
         with:
-          token: ${{ secrets.ACCESS_TOKEN }} # Note this is NOT GITHUB_TOKEN but a PAT
+          token: ${{ secrets.PERSONAL_TOKEN }} # Note this is NOT GITHUB_TOKEN but a PAT
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected # or refs/heads/target_branch
           repo: aoeu-e2e
           owner: theartofeducation
