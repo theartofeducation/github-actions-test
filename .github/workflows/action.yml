@@ -33,3 +33,13 @@ jobs:
             echo "Failed to return Run ID"
             exit 1
           fi
+
+      - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
+        uses: Codex-/await-remote-run@v1.4.0
+        with:
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          repo: github-actions-test
+          owner: theartofeducation
+          run_id: ${{ steps.return-dispatch.outputs.run_id }}
+          run_timeout_seconds: 300 # Optional
+          poll_interval_ms: 5000 # Optional
