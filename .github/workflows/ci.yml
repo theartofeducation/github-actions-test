@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKEN }}
           repo: github-actions-test
           owner: theartofeducation
-          runId: ${{ steps.return_dispatch.outputs.run_id }}
+          run_id: ${{ steps.return_dispatch.outputs.run_id }}
           run_timeout_seconds: 300 # Optional
           poll_interval_ms: 5000 # Optional
 
