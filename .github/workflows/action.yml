@@ -30,7 +30,7 @@ jobs:
       - name: Evaluate that the Run ID output has been set
         run: |
           if [ "${{ steps.return-dispatch.outputs.run_id }}" == "" ]; then
-            echo "Failed to return Run ID"
+            echo "Failed to return Run ID and testing a failure"
             exit 1
           fi
 
