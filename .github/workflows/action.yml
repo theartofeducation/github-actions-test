@@ -1,4 +1,4 @@
-name: gh-actions
+name: action.yml
 on:
   pull_request:
   push:
@@ -10,14 +10,14 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Dispatch and return Run ID
-        uses: codex-/return-dispatch@v1.5.0
+        uses: Codex-/return-dispatch@v1.5.0
         id: return-dispatch
         with:
           token: ${{ secrets.ACCESS_TOKEN }} # Note this is NOT GITHUB_TOKEN but a PAT
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected # or refs/heads/target_branch
           repo: aoeu-e2e
           owner: theartofeducation
-          workflow: ci.yml
+          workflow: test.yml
           workflow_inputs: '{"cake":"delicious"}'
           workflow_timeout_seconds: 100 # Default: 300
 
