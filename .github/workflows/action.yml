@@ -19,12 +19,12 @@ jobs:
           owner: theartofeducation
           workflow: test.yml
           workflow_inputs: '{"cake":"delicious"}'
-          workflow_timeout_seconds: 100 # Default: 300
+          workflow_timeout_seconds: 300 # Default: 300
 
       - name: Evaluate that the Run ID output has been set
         run: |
           if [ "${{ steps.return_dispatch.outputs.run_id }}" == "" ]; then
-            echo "Failed 2 return Run ID"
+            echo "Failed to return Run ID"
             exit 1
           fi
     
