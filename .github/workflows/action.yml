@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: test.yml
     types:
-      - [pending, completed]
+      - completed
 jobs:
   test:
     runs-on: ubuntu-latest
