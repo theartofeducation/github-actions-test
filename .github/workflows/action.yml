@@ -30,13 +30,3 @@ jobs:
     
       - name: Output fetched Run ID
         run: echo ${{ steps.return_dispatch.outputs.run_id }}
-          
-      - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
-        uses: codex-/await-remote-run@v1.4.0
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          repo: aoeu-e2e
-          owner: theartofeducation
-          run_id: ${{ steps.return_dispatch.outputs.run_id }}
-          run_timeout_seconds: 300 # Optional
-          poll_interval_ms: 5000 # Optional
