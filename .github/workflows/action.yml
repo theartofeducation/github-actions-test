@@ -1,4 +1,4 @@
-name: github-actions-test ci
+name: gh-actions
 on:
   pull_request:
   push:
