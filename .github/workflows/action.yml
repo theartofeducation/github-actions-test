@@ -26,10 +26,11 @@ jobs:
             echo "Failed to return Run ID"
             exit 1
           fi
+    
       - name: Output fetched Run ID
         run: echo ${{ steps.return_dispatch.outputs.run_id }}
           
-       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
+      - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.4.0
         with:
           token: ${{ secrets.PERSONAL_TOKEN }}
