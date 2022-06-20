@@ -1,9 +1,5 @@
 name: action.yml
 on:
-  workflow_run:
-    workflows: test.yml
-    types:
-      - completed
   pull_request:
   push:
 jobs:
