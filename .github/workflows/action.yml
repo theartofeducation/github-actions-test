@@ -8,7 +8,7 @@ jobs:
     name: Ping the E2E Repo, Return the Unique Workflow Run ID, and Return the Result of the Workflow
     runs-on: ubuntu-latest
     steps:
-    
+
       - name: Dispatch and return Run ID
         uses: codex-/return-dispatch@v1.5.0
         id: return-dispatch
@@ -21,7 +21,7 @@ jobs:
           workflow_inputs: '{"cake":"delicious"}'
           workflow_timeout_seconds: 300 # Default: 300
       
-      - name: Output fetched Run ID
+      - name: Output the fetched Run ID
         run: echo ${{ steps.return-dispatch.outputs.run_id }}
 
       - name: Evaluate that the Run ID output has been set
