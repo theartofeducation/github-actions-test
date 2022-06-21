@@ -9,9 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Display Username of Person Triggering the Workflow
-        run: |
-          REMOTE=https://github.com/${{ github.repository }}
-          git config user.name "${{ github.actor }}"
+        run: git config user.name "${{ github.actor }}"
 
       - name: Checkout Branch
         uses: actions/checkout@v2
