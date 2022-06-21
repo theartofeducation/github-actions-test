@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Display Username of Person Triggering the Workflow
-        run: git config user.name "${{ github.actor }}"
+        run: echo ${{ steps.outputs.github.actor }}
 
       - name: Checkout Branch
         uses: actions/checkout@v2
