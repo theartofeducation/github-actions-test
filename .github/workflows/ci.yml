@@ -23,6 +23,7 @@ jobs:
           repo: aoeu-e2e
           owner: theartofeducation
           workflow: test.yml
+          workflow_inputs: { "Username": "${{ github.actor }}" }
           workflow_timeout_seconds: 300 # Default: 300
       
       - name: Output the fetched Run ID
