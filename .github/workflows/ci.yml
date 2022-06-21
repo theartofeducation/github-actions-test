@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Display Username of Person Triggering the Workflow
         run: |
-        REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git config user.name "${{ github.actor }}"
+          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git config user.name "${{ github.actor }}"
 
       - name: Checkout Branch
         uses: actions/checkout@v2
