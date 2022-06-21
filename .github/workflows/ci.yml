@@ -1,4 +1,4 @@
-name: action.yml
+name: github-actions-test ci
 on:
   pull_request:
     types: opened
