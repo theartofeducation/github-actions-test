@@ -35,7 +35,7 @@ jobs:
       - name: Await Run ID Test Results ${{ steps.return-dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.4.0
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           repo: aoeu-e2e
           owner: theartofeducation
           run_id: ${{ steps.return-dispatch.outputs.run_id }}
