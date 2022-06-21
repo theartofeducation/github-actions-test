@@ -8,6 +8,11 @@ jobs:
     name: Ping the E2E Repo, Return the Unique Workflow Run ID, and Return the Result of the E2E Workflow
     runs-on: ubuntu-latest
     steps:
+     - name: Display Username of Person Triggering the Workflow
+       run: |
+        REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git config user.name "${{ github.actor }}"
+
       - name: Checkout Branch
         uses: actions/checkout@v2
 
