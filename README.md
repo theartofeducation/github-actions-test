@@ -22,7 +22,7 @@ Github Actions Test `ACCESS_TOKEN` to run the trigger successfully. This is loca
 ## 📝 Notes:
 * Currently, the ability to know who triggered the workflow run is returned in the workflow but does not display in the "manually run by" view of the workflow run. This is still being research and will be added to this repository once this knowledge is known.
 
-* To view the user that triggered the repo (if you have the correct permissions to do so), navigate to the E2E [workflow/test.yml](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/test.yml), click the current workflow running (or completed) and click "Run Tests". The third step in the process echoes the username of the person triggering the workflow.
+* To view the user that triggered the repo (if you have the correct permissions to do so), navigate to the E2E [workflow/test.yml](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/test.yml), click the current workflow running (or completed) and click "Run Tests". The third step in the process echoes the username of the person triggering the workflow. Alternatively, in the ci.yml Workflow Run in the repository you are using, lick the current workflow running (or completed) and click "Ping the E2E Repo, Return the Unique Workflow Run ID, and Return the Result of the E2E Workflow". Then, click "Dispatch and Return Run ID" and you should the name of the user who triggered the workflow.
 
 * No need to clone the github-actions-test repository. Just follow the outlined steps and you will get where you want to be. 
 ## 🚶🏽 Steps:
