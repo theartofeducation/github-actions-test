@@ -24,7 +24,7 @@ jobs:
           workflow_inputs: '{"username":"${{ github.actor }}"}'
           workflow_timeout_seconds: 300 # Default: 300
       
-      - name: Output the fetched Run ID
+      - name: Echo the fetched Run ID
         run: echo ${{ steps.return_dispatch.outputs.run_id }}
 
       - name: Validate the Run ID Output
