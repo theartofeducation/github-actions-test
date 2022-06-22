@@ -8,15 +8,13 @@ jobs:
     name: Ping the E2E Repo, Return the Unique Workflow Run ID, and Return the Result of the E2E Workflow
     runs-on: ubuntu-latest
     steps:
-      ##- name: Display Username of Person Triggering the Workflow
-        ##run: echo ${{ github.actor }}
 
       - name: Checkout Branch
         uses: actions/checkout@v2
 
       - name: Dispatch and return Run ID
         uses: codex-/return-dispatch@v1.5.0
-        id: return-dispatch
+        id: return_dispatch
         with:
           token: ${{ secrets.ACCESS_TOKEN }} # Note this is NOT GITHUB_TOKEN but a PAT
           ref: chore/sc-7778/if-a-test-fails-in-the-e2e-repo-it-gets-reflected # or refs/heads/target_branch
@@ -27,21 +25,21 @@ jobs:
           workflow_timeout_seconds: 300 # Default: 300
       
       - name: Output the fetched Run ID
-        run: echo ${{ steps.return-dispatch.outputs.run_id }}
+        run: echo ${{ steps.return_dispatch.outputs.run_id }}
 
       - name: Validate the Run ID Output
         run: |
-          if [ "${{ steps.return-dispatch.outputs.run_id }}" == "" ]; then
+          if [ "${{ steps.return_dispatch.outputs.run_id }}" == "" ]; then
             echo "Failed to return Run ID and trying to test a test failure"
             exit 1
           fi
 
-      - name: Await Run ID Test Results ${{ steps.return-dispatch.outputs.run_id }}
+      - name: Await Run ID Test Results ${{ steps.return_dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.4.0
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repo: aoeu-e2e
           owner: theartofeducation
-          run_id: ${{ steps.return-dispatch.outputs.run_id }}
+          run_id: ${{ steps.return_dispatch.outputs.run_id }}
           run_timeout_seconds: 300 # Optional
           poll_interval_ms: 5000 # Optional
