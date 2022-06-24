@@ -9,41 +9,37 @@ workflow which provides feedback utilizing a full suite of automated tests.
 
 ## 📚 Resources:
 
-* Github Actions experience is helpful but not necessary. Documentation on [creating a repository dispatch event](https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event) 
+* Github Actions experience is helpful but not necessary. Documentation on [triggering a workflow in a repository](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow) 
 is available for further reading.
 
 * If Github Actions is new to you, keep in mind that the file of the format has to follow a specific pattern. You can read more 
 about this format in the [Workflow syntax for Github Actions document](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions).
 
 * Since the [AOEU-E2E](https://github.com/theartofeducation/aoeu-e2e) repository is private, you will need the 
-Github Actions Test ACCESS_TOKEN to run the trigger successfully. This is located in the Software Engineering Team section in our Password Manager.
-## 📝 Notes: 
+Github Actions Test `ACCESS_TOKEN` to run the trigger successfully. This is located in the Software Engineering Team section in our Password Manager. The `ACCESS_TOKEN` must also exist as a secret in the repository you are using so make sure, as a user within the [AOEU](https://github.com/theartofeducation) organization, you have the correct permissions.
+
+* For this purpose, we will be using a third party service from [Alex Miller](https://github.com/Codex-). This function uses the [Return Dispatch](https://github.com/Codex-/return-dispatch) and the [Await Remote Run](https://github.com/Codex-/await-remote-run). The Return Dispatch retrieves the unique id of the [AOEU-E2E](https://github.com/theartofeducation/aoeu-e2e) workflow run and inserts the id in worflow of the repository you are using. The [Await Remote Run](https://github.com/Codex-/await-remote-run) then waits for the [AOEU-E2E](https://github.com/theartofeducation/aoeu-e2e) run to complete and will display either the success or the failure of the run.
+## 📝 Notes:
+* Currently, the ability to know who triggered the workflow run is returned in the workflow but does not display in the "manually run by" view of the workflow run. This is still being research and will be added to this repository once this knowledge is known.
+
+* To view the user that triggered the repo (if you have the correct permissions to do so), navigate to the E2E [workflow/test.yml](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/test.yml), click the current workflow running (or completed) and click "Run Tests". The third step in the process echoes the username of the person triggering the workflow. Alternatively, in the ci.yml Workflow Run in the repository you are using, lick the current workflow running (or completed) and click "Ping the E2E Repo, Return the Unique Workflow Run ID, and Return the Result of the E2E Workflow". Then, click "Dispatch and Return Run ID" and you should the name of the user who triggered the workflow.
 
 * No need to clone the github-actions-test repository. Just follow the outlined steps and you will get where you want to be. 
 ## 🚶🏽 Steps:
 
-1. From your repository, open your ci.yml file found in the .github->workflows folder
-2. Copy the github workflow in the [ci.yml in this repository](/github-actions-test/.github/workflows/ci.yml
-3. Add the copied workflow into your repository's ci.yml
-4. In your browser, open up the repository you are using in github
-5. Click the repository settings and click "Secrets" from the left hand navigation menu
-6. Click "Actions"
-7. Click "New repository secret"
-8. Open the Software Engineering Team in the Password Manager and copy the Github Actions Test ACCESS_TOKEN value
-9. Back in Github, in the name field, input ACCESS_TOKEN 
-10. In the value field, paste the ACCESS_TOKEN value
-11. Click "Add Secret"
-12. Back in your repository on your local environment, make any change to your code and push to your current branch
-13. In your branch in Github, you should see a successful check of the API call to the E2E repository
- ```Run curl \
-    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                    Dload  Upload   Total   Spent    Left  Speed
-
-    0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-    100    64    0     0  100    64      0    374 --:--:-- --:--:-- --:--:--   372
-    100    64    0     0  100    64      0    374 --:--:-- --:--:-- --:--:--   372
-```
-14. ✨ Watch the magic happen in the [aoeu-e2e workflows page](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/ci.yml)
+1. Do you have a ci.yml file in your .github folder? Do you have a .github folder? If not, open your repository and create a `.github` folder. Create a folder titled `workflows` inside of your .github folder. Then create a file named `ci.yml`. This is the file you will work from.
+1. Copy the github workflow in the [ci.yml in this repository](/github-actions-test/.github/workflows/ci.yml)
+1. Add the copied workflow into your repository's ci.yml
+1. In your browser, open up the repository you are using in github
+1. Click the repository settings and click "Secrets" from the left hand navigation menu
+1. Click "Actions"
+1. Click "New repository secret"
+1. Open the Software Engineering Team in the Password Manager and copy the Github Actions Test ACCESS_TOKEN value
+1. Back in Github, in the name field, input ACCESS_TOKEN 
+1. In the value field, paste the ACCESS_TOKEN value
+1. Click "Add Secret"
+1. Back in your repository on your local environment, make any change to your code and push to your current branch
+1. ✨ Watch the magic happen in the [aoeu-e2e `test.yml` workflow page](https://github.com/theartofeducation/aoeu-e2e/actions/workflows/test.yml)
 
 ## 🤔 What's Happening here?:
 
@@ -52,35 +48,52 @@ Github Actions Test ACCESS_TOKEN to run the trigger successfully. This is locate
    * Repo B = any repo in the AOEU orgnization, public or private
 
 * Repo A Setup:
-   * Within the Github Actions Workflow file, the [repository_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch) webhook event payload is required. This enables the /dispatch url to run successfully from Repo B. 
-   * Also required is the [workflow_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) webhook event. The /dispatch url will fail without this event. 
+   * There is one type of workflow trigger being used in the E2E repository. This is the [Workflow Dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch). When Repo B opens a pull request or makes a change that updates the code, the [Return Dispatch](https://github.com/Codex-/return-dispatch) triggers the workflow that exists in Repo A. The inputs send out the request to Repo A to return a distinct id for the workflow run that will be triggered and the username of the person triggering the workflow from Repo B.
 
-* What Repo A Setup looks like: 
-```on:
-  repository_dispatch:
-  workflow_dispatch:
-  push:
-```
+   * What Repo A Setup looks like: 
+   ```
+   name: test.yml
+   on:
+   workflow_dispatch:
+      inputs:
+         distinct_id:
+         required: true
+         username:
+         required: true
+   ```
 * Repo B Setup:
-   * Within the Github Actions Workflow file, there is the corresponding [repository_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch) webhook event payload. This is required. 
-   * In the `jobs:` action, you'll  have the `test:`, `name:` (use any name that is recognizable to you), `runs-on:`, `steps:`, and `-run:`.
-   * Included in the `-run:` is the url that calls the E2E dispatch workflow, with the `ACESS_TOKEN` that validates the credentials. The `-d '{"ref":"main"}'` referrences the branch you want to run the tests against in the E2E repo. 
-   * 🌶️ Hot Tip: You can run against any branch in E2E by changing the branch name of the `ref`. Example: '{"ref":"`insert-github-branch-here`"}'`
 
-* What Repo B Setup looks like: 
-   * ```name: github-actions-test ci
-        on:
-        push:
-        workflow_dispatch:
-        jobs:
-        test:
-            name: Run GA Workflow from E2E
-            runs-on: ubuntu-latest
-            steps:
-            - run: |
-                curl \
-                -X POST \
-                -H "Accept: application/vnd.github.everest-preview+json" \
-                https://api.github.com/repos/theartofeducation/aoeu-e2e/actions/workflows/ci.yml/dispatches \
-                -u ${{ secrets.ACCESS_TOKEN }} \
-                -d '{"ref":"main"}'
+   * What Repo B Setup looks like: 
+   ```
+   name: github-actions-test ci
+   on:
+   pull_request:
+      types: opened
+   push:
+   ```
+   * The [Return Dispatch](https://github.com/Codex-/return-dispatch#apis-used) uses the [Create a Workflow Dispatch event](https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event)], the [List Repository Workflows](https://docs.github.com/en/rest/reference/actions#list-repository-workflows), the [List Workflow Runs](https://docs.github.com/en/rest/reference/actions#list-workflow-runs), and the [List Jobs for a Workflow Run](https://docs.github.com/en/rest/reference/actions#list-jobs-for-a-workflow-run) API calls
+   
+   * The [Await Remote Run](https://github.com/Codex-/await-remote-run#apis-used) uses the [Get a Workflow Run](https://docs.github.com/en/rest/reference/actions#get-a-workflow-run) and the [List Jobs for a Workflow Run](https://docs.github.com/en/rest/reference/actions#list-jobs-for-a-workflow-run) API calls
+
+   * The Return Dispatch uses the `with:` information in the workflow to let the E2E repository which branch is being requested (`ref:`), which workflow needs to be triggered (`workflow:`), and who is requesting the workflow run (`workflow_inputs:`). 
+   ```
+   with:
+          token: ${{ secrets.ACCESS_TOKEN }} # Note this is NOT GITHUB_TOKEN but a PAT
+          ref: main # or target_branch
+          repo: aoeu-e2e
+          owner: theartofeducation
+          workflow: test.yml
+          workflow_inputs: '{"username":"${{ github.actor }}"}'
+          workflow_timeout_seconds:
+   ```
+
+   * The Await Remote Run uses the `with:` information in the workflow to wait for the workflow run that's returned and to retreive the success or failure of that worklow run using the run_id (`run_id:`)
+   ```
+   with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repo: aoeu-e2e
+          owner: theartofeducation
+          run_id: ${{ steps.return_dispatch.outputs.run_id }}
+          run_timeout_seconds: 300 # Optional
+          poll_interval_ms: 5000 # Optional
+   ```
